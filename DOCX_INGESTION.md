@@ -64,17 +64,20 @@ The generated `resume.json` includes:
 ## Features
 
 ### Flexible Parsing
+
 - Handles various date formats (MM/YYYY, Month YYYY, YYYY)
 - Extracts locations from parentheses or after commas
 - Recognizes bullet points in multiple formats
 - Detects URLs and links automatically
 
 ### HTML Preservation
+
 - Preserves formatting (bold, italic, lists) in HTML form
 - Provides plain text versions for fallback
 - Safely sanitizes HTML before rendering
 
 ### Robust Error Handling
+
 - Validates parsed data with Zod schemas
 - Provides detailed parse logs
 - Handles missing sections gracefully
@@ -84,6 +87,7 @@ The generated `resume.json` includes:
 ### First Time Setup
 
 1. Install dependencies:
+
    ```bash
    npm install
    ```
@@ -91,6 +95,7 @@ The generated `resume.json` includes:
 2. Place your resume DOCX at `assets/resume.docx`
 
 3. Run ingestion:
+
    ```bash
    npm run ingest:docx
    ```
@@ -118,6 +123,7 @@ All pages now use the parsed resume data:
 ## HTML Rendering
 
 HTML content is safely rendered using the `SafeHtml` component, which:
+
 - Sanitizes HTML to prevent XSS attacks
 - Allows safe tags (p, br, strong, em, ul, ol, li, a, headings)
 - Preserves formatting while ensuring security
@@ -125,16 +131,19 @@ HTML content is safely rendered using the `SafeHtml` component, which:
 ## Troubleshooting
 
 ### No Sections Found
+
 - Check that your DOCX has clear headings
 - Try using standard section names (Summary, Skills, Experience, etc.)
 - The script will attempt to parse the whole document if sections aren't found
 
 ### Missing Data
+
 - Verify your DOCX structure matches expected formats
 - Check the parse log for warnings
 - Some fields are optional and won't break the site if missing
 
 ### Date Parsing Issues
+
 - Use consistent date formats (MM/YYYY or Month YYYY)
 - Include "Present" or "Current" for ongoing positions
 - Dates are normalized to YYYY-MM format
@@ -142,17 +151,21 @@ HTML content is safely rendered using the `SafeHtml` component, which:
 ## Technical Details
 
 ### Dependencies
+
 - `mammoth`: DOCX to HTML conversion
 - `zod`: Schema validation
 - `isomorphic-dompurify`: HTML sanitization
 
 ### Script Location
+
 - `scripts/ingest-resume-docx.ts`
 
 ### Output Location
+
 - `content/resume.json`
 
 ### Integration Points
+
 - `lib/data.ts`: Data access functions
 - `components/SafeHtml.tsx`: HTML rendering component
 - All page components: Use `getResume()` to access data
@@ -160,9 +173,9 @@ HTML content is safely rendered using the `SafeHtml` component, which:
 ## Future Enhancements
 
 Potential improvements:
+
 - Support for PDF resumes
 - Automatic image extraction from DOCX
 - More sophisticated date/location parsing
 - Skill level detection from context
 - Link validation and formatting
-

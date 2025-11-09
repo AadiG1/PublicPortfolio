@@ -8,13 +8,15 @@ interface TimelineProps {
 
 export default function Timeline({ items, type }: TimelineProps) {
   if (!items || items.length === 0) {
-    return <p className="text-gray-600 dark:text-gray-400">No items to display.</p>;
+    return (
+      <p className="text-gray-600 dark:text-gray-400">No items to display.</p>
+    );
   }
 
   return (
     <div className="relative">
-      <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 h-full w-0.5 bg-gray-300 dark:bg-gray-700" />
-      <div className="space-y-8">
+      <div className="absolute left-4 h-full w-1 transform rounded-full bg-gradient-to-b from-blue-400 to-purple-500 dark:from-blue-600 dark:to-purple-600 md:left-1/2 md:-translate-x-1/2" />
+      <div className="space-y-12">
         {items.map((item, index) => {
           const exp = type === "experience" ? (item as Experience) : null;
           const edu = type === "education" ? (item as Education) : null;
@@ -28,73 +30,81 @@ export default function Timeline({ items, type }: TimelineProps) {
               : edu?.endDate || "N/A";
 
           return (
-            <div key={index} className="relative pl-12 md:pl-0">
-              <div className="absolute left-2 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-blue-600 dark:bg-blue-400 rounded-full border-4 border-white dark:border-gray-900" />
-              <div className="md:flex md:items-start">
+            <div
+              key={index}
+              className="relative animate-slide-up pl-12 md:pl-0"
+              style={{ animationDelay: `${index * 100}ms` }}
+            >
+              <div className="absolute left-2 z-10 h-6 w-6 transform rounded-full border-4 border-white bg-gradient-to-br from-blue-500 to-purple-600 shadow-lg dark:border-gray-900 md:left-1/2 md:-translate-x-1/2" />
+              <div className="gap-8 md:flex md:items-start">
                 <div className="md:w-1/2 md:pr-8 md:text-right">
-                  <div className="text-sm text-gray-600 dark:text-gray-400">
+                  <div className="mb-2 inline-block rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">
                     {startDate} - {endDate}
                   </div>
                   {type === "experience" && exp && (
-                    <>
-                      <h3 className="text-lg font-semibold dark:text-white mt-1">
+                    <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-lg transition-all duration-300 hover:shadow-xl dark:border-gray-700 dark:bg-gray-800">
+                      <h3 className="mb-1 mt-2 text-xl font-bold dark:text-white">
                         {exp.title}
                       </h3>
-                      <p className="text-gray-700 dark:text-gray-300">
+                      <p className="mb-1 text-lg font-semibold text-blue-600 dark:text-blue-400">
                         {exp.company}
                       </p>
                       {exp.location && (
                         <p className="text-sm text-gray-600 dark:text-gray-400">
-                          {exp.location}
+                          📍 {exp.location}
                         </p>
                       )}
-                    </>
+                    </div>
                   )}
                   {type === "education" && edu && (
-                    <>
-                      <h3 className="text-lg font-semibold dark:text-white mt-1">
+                    <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-lg transition-all duration-300 hover:shadow-xl dark:border-gray-700 dark:bg-gray-800">
+                      <h3 className="mb-1 mt-2 text-xl font-bold dark:text-white">
                         {edu.degree}
                       </h3>
-                      <p className="text-gray-700 dark:text-gray-300">
+                      <p className="mb-1 text-lg font-semibold text-purple-600 dark:text-purple-400">
                         {edu.school}
                       </p>
                       {edu.location && (
                         <p className="text-sm text-gray-600 dark:text-gray-400">
-                          {edu.location}
+                          📍 {edu.location}
                         </p>
                       )}
-                    </>
+                    </div>
                   )}
                 </div>
-                <div className="md:w-1/2 md:pl-8 mt-4 md:mt-0">
+                <div className="mt-4 md:mt-0 md:w-1/2 md:pl-8">
                   {type === "experience" && exp && (
-                    <div className="text-gray-700 dark:text-gray-300">
-                      {exp.bulletsHtml && exp.bulletsHtml.length > 0 ? (
-                        <ul className="list-disc list-inside space-y-1">
-                          {exp.bulletsHtml.map((bullet, i) => (
-                            <li key={i}>
-                              <SafeHtml html={bullet} />
-                            </li>
-                          ))}
-                        </ul>
-                      ) : exp.bullets && exp.bullets.length > 0 ? (
-                        <ul className="list-disc list-inside space-y-1">
-                          {exp.bullets.map((bullet, i) => (
-                            <li key={i}>{bullet}</li>
-                          ))}
-                        </ul>
-                      ) : exp.description ? (
-                        <p>{exp.description}</p>
-                      ) : null}
+                    <div className="rounded-xl border border-gray-200 bg-gray-50 p-6 dark:border-gray-700 dark:bg-gray-900/50">
+                      <div className="leading-relaxed text-gray-700 dark:text-gray-300">
+                        {exp.bulletsHtml && exp.bulletsHtml.length > 0 ? (
+                          <ul className="list-inside list-disc space-y-2">
+                            {exp.bulletsHtml.map((bullet, i) => (
+                              <li key={i}>
+                                <SafeHtml html={bullet} />
+                              </li>
+                            ))}
+                          </ul>
+                        ) : exp.bullets && exp.bullets.length > 0 ? (
+                          <ul className="list-inside list-disc space-y-2">
+                            {exp.bullets.map((bullet, i) => (
+                              <li key={i}>{bullet}</li>
+                            ))}
+                          </ul>
+                        ) : exp.description ? (
+                          <p>{exp.description}</p>
+                        ) : null}
+                      </div>
                     </div>
                   )}
                   {type === "education" && edu && (
-                    <div className="text-gray-700 dark:text-gray-300">
-                      {edu.descriptionHtml ? (
-                        <SafeHtml html={edu.descriptionHtml} />
-                      ) : edu.description ? (
-                        <p>{edu.description}</p>
-                      ) : null}
+                    <div className="rounded-xl border border-gray-200 bg-gray-50 p-6 dark:border-gray-700 dark:bg-gray-900/50">
+                      <div className="leading-relaxed text-gray-700 dark:text-gray-300">
+                        {edu.descriptionHtml ? (
+                          <SafeHtml html={edu.descriptionHtml} />
+                        ) : edu.description ? (
+                          <p>{edu.description}</p>
+                        ) : null}
+                      </div>
                     </div>
                   )}
                 </div>
@@ -106,4 +116,3 @@ export default function Timeline({ items, type }: TimelineProps) {
     </div>
   );
 }
-

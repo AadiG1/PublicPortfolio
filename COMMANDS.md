@@ -137,4 +137,3 @@ npm install
 rm -rf public/images
 npm run seed:images
 ```
-

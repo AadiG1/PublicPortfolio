@@ -41,6 +41,7 @@ This document outlines the assumptions, architecture decisions, and implementati
 ### Replacing Images
 
 To replace placeholder images:
+
 1. Replace files in `public/images/` with your own images
 2. Maintain the same filenames or update references in code
 3. For projects, update `content/projects.json` if paths change
@@ -48,26 +49,31 @@ To replace placeholder images:
 ## Architecture Decisions
 
 ### Next.js App Router
+
 - Uses the new App Router for better performance and developer experience
 - Server components by default for better SEO and performance
 - Client components marked with `"use client"` where needed (forms, theme toggle)
 
 ### Styling
+
 - Tailwind CSS for utility-first styling
 - Dark mode via `dark:` prefix and CSS variables
 - Responsive design with mobile-first approach
 
 ### State Management
+
 - React Context for theme management
 - React Hook Form for form state
 - Zod for schema validation
 
 ### Testing
+
 - Vitest for test runner (faster than Jest)
 - React Testing Library for component testing
 - jsdom for DOM simulation
 
 ### Code Quality
+
 - ESLint for linting
 - Prettier for formatting
 - Husky for pre-commit hooks
@@ -138,12 +144,14 @@ vibe-portfolio/
 ## Deployment Considerations
 
 ### Cloud Run
+
 - Uses `PORT` environment variable (defaults to 3000)
 - Build command: `npm run build`
 - Start command: `npm start` (uses PORT env var)
 - Can use buildpacks or Dockerfile
 
 ### Environment Variables
+
 - No required environment variables for basic functionality
 - Contact form can be enhanced with email service API keys
 - Image seeding uses public API (no API keys needed)
@@ -161,16 +169,19 @@ vibe-portfolio/
 ## Troubleshooting
 
 ### Images Not Loading
+
 - Ensure `npm run seed:images` has been run
 - Check that images exist in `public/images/`
 - Verify image paths in `content/projects.json`
 
 ### Build Failures
+
 - Run `npm run type-check` to check for TypeScript errors
 - Run `npm run lint` to check for linting errors
 - Ensure all dependencies are installed with `npm install`
 
 ### Tests Failing
+
 - Ensure test dependencies are installed
 - Check that mocks are properly configured
 - Verify test environment setup
@@ -178,4 +189,3 @@ vibe-portfolio/
 ## Conclusion
 
 This portfolio is designed to be production-ready, accessible, and easily customizable. The image seeding strategy ensures reproducible builds while allowing for easy replacement with custom images. The modular structure makes it easy to add new features and customize content.
-

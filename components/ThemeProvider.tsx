@@ -12,32 +12,46 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
+  // Initialize with "light" to match server-side rendering
+  // This prevents hydration mismatches
   const [theme, setTheme] = useState<Theme>("light");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // Only run on client side
     setMounted(true);
-    const savedTheme = localStorage.getItem("theme") as Theme | null;
-    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
-      .matches
-      ? "dark"
-      : "light";
-    const initialTheme = savedTheme || systemTheme;
-    setTheme(initialTheme);
-    document.documentElement.classList.toggle("dark", initialTheme === "dark");
+    try {
+      const savedTheme = localStorage.getItem("theme") as Theme | null;
+      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
+        .matches
+        ? "dark"
+        : "light";
+      const initialTheme = savedTheme || systemTheme;
+      setTheme(initialTheme);
+      document.documentElement.classList.toggle(
+        "dark",
+        initialTheme === "dark"
+      );
+    } catch (error) {
+      // Fallback if localStorage or matchMedia is not available
+      console.error("Error initializing theme:", error);
+    }
   }, []);
 
   const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
-    document.documentElement.classList.toggle("dark", newTheme === "dark");
+    try {
+      const newTheme = theme === "light" ? "dark" : "light";
+      setTheme(newTheme);
+      localStorage.setItem("theme", newTheme);
+      document.documentElement.classList.toggle("dark", newTheme === "dark");
+    } catch (error) {
+      console.error("Error toggling theme:", error);
+    }
   };
 
-  if (!mounted) {
-    return <>{children}</>;
-  }
-
+  // Always provide the context, even before mounting
+  // This prevents the "useTheme must be used within a ThemeProvider" error
+  // The theme will update once useEffect runs on the client
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}
@@ -52,4 +66,3 @@ export function useTheme() {
   }
   return context;
 }
-

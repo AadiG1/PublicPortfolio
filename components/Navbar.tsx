@@ -20,17 +20,17 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur-sm dark:bg-gray-900/80 dark:border-gray-800">
+    <nav className="sticky top-0 z-50 w-full border-b bg-white/90 shadow-sm backdrop-blur-md dark:border-gray-800 dark:bg-gray-900/90">
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           <Link
             href="/"
-            className="text-xl font-bold text-gray-900 dark:text-white"
+            className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-xl font-bold text-transparent transition-all hover:from-blue-700 hover:to-purple-700 dark:from-blue-400 dark:to-purple-400"
           >
             Vibe Portfolio
           </Link>
 
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden items-center space-x-6 md:flex">
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -50,12 +50,12 @@ export default function Navbar() {
           <div className="flex items-center space-x-4">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              className="rounded-lg p-2 transition-colors hover:bg-gray-100 dark:hover:bg-gray-800"
               aria-label="Toggle dark mode"
             >
               {theme === "dark" ? (
                 <svg
-                  className="w-5 h-5"
+                  className="h-5 w-5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -69,7 +69,7 @@ export default function Navbar() {
                 </svg>
               ) : (
                 <svg
-                  className="w-5 h-5"
+                  className="h-5 w-5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -86,13 +86,13 @@ export default function Navbar() {
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
+              className="rounded-lg p-2 hover:bg-gray-100 dark:hover:bg-gray-800 md:hidden"
               aria-label="Toggle menu"
               aria-expanded={mobileMenuOpen}
             >
               {mobileMenuOpen ? (
                 <svg
-                  className="w-6 h-6"
+                  className="h-6 w-6"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -106,7 +106,7 @@ export default function Navbar() {
                 </svg>
               ) : (
                 <svg
-                  className="w-6 h-6"
+                  className="h-6 w-6"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -125,15 +125,15 @@ export default function Navbar() {
 
         {/* Mobile menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden border-t dark:border-gray-800">
-            <div className="px-2 pt-2 pb-3 space-y-1">
+          <div className="border-t dark:border-gray-800 md:hidden">
+            <div className="space-y-1 px-2 pb-3 pt-2">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
                   className={cn(
-                    "block px-3 py-2 rounded-md text-base font-medium transition-colors",
+                    "block rounded-md px-3 py-2 text-base font-medium transition-colors",
                     pathname === item.href
                       ? "bg-blue-50 text-blue-600 dark:bg-blue-900/20 dark:text-blue-400"
                       : "text-gray-700 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-800"
@@ -149,4 +149,3 @@ export default function Navbar() {
     </nav>
   );
 }
-

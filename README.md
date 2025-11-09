@@ -25,28 +25,34 @@ A production-ready Next.js + TypeScript + Tailwind CSS personal portfolio that i
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone <your-repo-url>
 cd vibe-portfolio
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Ingest resume from DOCX file:
+
 ```bash
 npm run ingest:docx
 ```
+
 This will parse `assets/resume.docx` and generate `content/resume.json`.
 
 4. Seed images (downloads placeholder images):
+
 ```bash
 npm run seed:images
 ```
 
 5. Run the development server:
+
 ```bash
 npm run dev
 ```
@@ -114,6 +120,7 @@ The portfolio pulls content from your resume DOCX file:
 1. Place your resume DOCX file at `assets/resume.docx` (or in the parent directory's `assets/` folder).
 
 2. Run the ingestion script:
+
    ```bash
    npm run ingest:docx
    ```
@@ -154,6 +161,7 @@ To replace placeholder images with your own:
 The project is configured for Cloud Run with buildpacks or Docker. The `server.js` automatically reads the `PORT` environment variable that Cloud Run provides.
 
 **Option 1: Using Buildpacks (Simplest)**
+
 ```bash
 gcloud run deploy vibe-portfolio \
   --source . \
@@ -163,6 +171,7 @@ gcloud run deploy vibe-portfolio \
 ```
 
 **Option 2: Using Docker**
+
 ```bash
 # Build and deploy with Docker
 gcloud run deploy vibe-portfolio \
@@ -173,6 +182,7 @@ gcloud run deploy vibe-portfolio \
 ```
 
 The Dockerfile is already configured and will:
+
 - Install dependencies
 - Seed images during build
 - Build the Next.js application
@@ -205,6 +215,7 @@ Dark mode is handled by the `ThemeProvider` component and uses system preference
 ## Testing
 
 Run tests with:
+
 ```bash
 npm test
 ```
@@ -226,4 +237,3 @@ MIT License - see LICENSE file for details.
 ## Support
 
 For issues and questions, please open an issue on GitHub.
-

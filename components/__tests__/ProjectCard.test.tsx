@@ -34,4 +34,3 @@ describe("ProjectCard", () => {
     expect(screen.getByText("Live Demo")).toBeInTheDocument();
   });
 });
-

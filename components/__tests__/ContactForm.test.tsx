@@ -31,7 +31,9 @@ describe("ContactForm", () => {
     await user.click(submitButton);
 
     await waitFor(() => {
-      expect(screen.getByText(/name must be at least 2 characters/i)).toBeInTheDocument();
+      expect(
+        screen.getByText(/name must be at least 2 characters/i)
+      ).toBeInTheDocument();
     });
   });
 
@@ -62,7 +64,10 @@ describe("ContactForm", () => {
     await user.type(screen.getByLabelText(/name/i), "John Doe");
     await user.type(screen.getByLabelText(/email/i), "john@example.com");
     await user.type(screen.getByLabelText(/subject/i), "Test Subject");
-    await user.type(screen.getByLabelText(/message/i), "This is a test message");
+    await user.type(
+      screen.getByLabelText(/message/i),
+      "This is a test message"
+    );
 
     const submitButton = screen.getByText("Send Message");
     await user.click(submitButton);
@@ -78,4 +83,3 @@ describe("ContactForm", () => {
     });
   });
 });
-

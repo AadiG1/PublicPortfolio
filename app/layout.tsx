@@ -6,7 +6,11 @@ import { Toaster } from "react-hot-toast";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+});
 
 export const metadata: Metadata = {
   title: "Vibe Portfolio | Full-Stack Developer",
@@ -15,7 +19,8 @@ export const metadata: Metadata = {
   authors: [{ name: "Your Name" }],
   openGraph: {
     title: "Vibe Portfolio | Full-Stack Developer",
-    description: "Personal portfolio showcasing projects, skills, and experience",
+    description:
+      "Personal portfolio showcasing projects, skills, and experience",
     type: "website",
     images: [
       {
@@ -29,7 +34,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Vibe Portfolio | Full-Stack Developer",
-    description: "Personal portfolio showcasing projects, skills, and experience",
+    description:
+      "Personal portfolio showcasing projects, skills, and experience",
     images: ["/images/og-image.jpg"],
   },
   robots: {
@@ -45,17 +51,26 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={`${inter.variable} font-sans antialiased`}>
         <ThemeProvider>
-          <div className="flex min-h-screen flex-col">
+          <div className="flex min-h-screen flex-col bg-white transition-colors duration-300 dark:bg-gray-900">
             <Navbar />
             <main className="flex-1">{children}</main>
             <Footer />
           </div>
-          <Toaster position="top-right" />
+          <Toaster
+            position="top-right"
+            toastOptions={{
+              duration: 4000,
+              style: {
+                background: "var(--background)",
+                color: "var(--foreground)",
+                border: "1px solid rgba(0, 0, 0, 0.1)",
+              },
+            }}
+          />
         </ThemeProvider>
       </body>
     </html>
   );
 }
-

@@ -41,4 +41,3 @@ describe("Navbar", () => {
     expect(toggleButton).toBeInTheDocument();
   });
 });
-

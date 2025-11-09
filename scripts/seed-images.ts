@@ -10,20 +10,87 @@ interface ImageConfig {
   seed: string;
   width: number;
   height: number;
+  type: "headshot" | "project" | "gallery" | "og";
 }
 
 const imagesToSeed: ImageConfig[] = [
-  { filename: "headshot.jpg", seed: "headshot-vibe-portfolio", width: 400, height: 400 },
-  { filename: "project-1.jpg", seed: "project-1-ecommerce", width: 800, height: 600 },
-  { filename: "project-2.jpg", seed: "project-2-taskapp", width: 800, height: 600 },
-  { filename: "project-3.jpg", seed: "project-3-weather", width: 800, height: 600 },
-  { filename: "gallery-1.jpg", seed: "gallery-1-portfolio", width: 600, height: 400 },
-  { filename: "gallery-2.jpg", seed: "gallery-2-portfolio", width: 600, height: 400 },
-  { filename: "gallery-3.jpg", seed: "gallery-3-portfolio", width: 600, height: 400 },
-  { filename: "gallery-4.jpg", seed: "gallery-4-portfolio", width: 600, height: 400 },
-  { filename: "gallery-5.jpg", seed: "gallery-5-portfolio", width: 600, height: 400 },
-  { filename: "gallery-6.jpg", seed: "gallery-6-portfolio", width: 600, height: 400 },
-  { filename: "og-image.jpg", seed: "og-vibe-portfolio", width: 1200, height: 630 },
+  {
+    filename: "headshot.jpg",
+    seed: "headshot-aditya-gupta",
+    width: 400,
+    height: 400,
+    type: "headshot",
+  },
+  {
+    filename: "project-1.jpg",
+    seed: "project-1-ecommerce",
+    width: 800,
+    height: 600,
+    type: "project",
+  },
+  {
+    filename: "project-2.jpg",
+    seed: "project-2-taskapp",
+    width: 800,
+    height: 600,
+    type: "project",
+  },
+  {
+    filename: "project-3.jpg",
+    seed: "project-3-weather",
+    width: 800,
+    height: 600,
+    type: "project",
+  },
+  {
+    filename: "gallery-1.jpg",
+    seed: "gallery-1-portfolio",
+    width: 600,
+    height: 400,
+    type: "gallery",
+  },
+  {
+    filename: "gallery-2.jpg",
+    seed: "gallery-2-portfolio",
+    width: 600,
+    height: 400,
+    type: "gallery",
+  },
+  {
+    filename: "gallery-3.jpg",
+    seed: "gallery-3-portfolio",
+    width: 600,
+    height: 400,
+    type: "gallery",
+  },
+  {
+    filename: "gallery-4.jpg",
+    seed: "gallery-4-portfolio",
+    width: 600,
+    height: 400,
+    type: "gallery",
+  },
+  {
+    filename: "gallery-5.jpg",
+    seed: "gallery-5-portfolio",
+    width: 600,
+    height: 400,
+    type: "gallery",
+  },
+  {
+    filename: "gallery-6.jpg",
+    seed: "gallery-6-portfolio",
+    width: 600,
+    height: 400,
+    type: "gallery",
+  },
+  {
+    filename: "og-image.jpg",
+    seed: "og-vibe-portfolio",
+    width: 1200,
+    height: 630,
+    type: "og",
+  },
 ];
 
 async function downloadImage(url: string, filepath: string): Promise<void> {
@@ -57,18 +124,32 @@ async function seedImages(): Promise<void> {
     const url = getPlaceholderImageUrl(
       imageConfig.seed,
       imageConfig.width,
-      imageConfig.height
+      imageConfig.height,
+      imageConfig.type
     );
 
-    // Skip if image already exists
-    if (fs.existsSync(filepath)) {
-      console.log(`⏭️  Skipped (already exists): ${imageConfig.filename}`);
-      continue;
-    }
+    // Skip if image already exists (comment out to force re-download)
+    // if (fs.existsSync(filepath)) {
+    //   console.log(`⏭️  Skipped (already exists): ${imageConfig.filename}`);
+    //   continue;
+    // }
 
-    await downloadImage(url, filepath);
-    // Small delay to be respectful to the API
-    await new Promise((resolve) => setTimeout(resolve, 200));
+    try {
+      await downloadImage(url, filepath);
+      // Small delay to be respectful to the API
+      await new Promise((resolve) => setTimeout(resolve, 300));
+    } catch (error) {
+      console.error(
+        `Failed to download ${imageConfig.filename}, using fallback...`
+      );
+      // Fallback to Picsum if Unsplash/Pravatar fails
+      const fallbackUrl = `https://picsum.photos/seed/${imageConfig.seed}/${imageConfig.width}/${imageConfig.height}`;
+      try {
+        await downloadImage(fallbackUrl, filepath);
+      } catch (fallbackError) {
+        console.error(`Fallback also failed for ${imageConfig.filename}`);
+      }
+    }
   }
 
   // Verify projects.json references local images
@@ -97,4 +178,3 @@ seedImages().catch((error) => {
   console.error("❌ Error seeding images:", error);
   process.exit(1);
 });
-

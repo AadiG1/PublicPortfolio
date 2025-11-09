@@ -1,71 +1,400 @@
 {
-  "summary": "Full-stack developer with 5+ years of experience building scalable web applications. Passionate about clean code, user experience, and modern web technologies.",
+  "summaryText": "Business Analytics and Information Management student with strong data science concentration, experienced in applying Python, R, and SQL to solve real-world business problems. Skilled at transforming complex data into actionable insights to support strategic decision-making and operational efficiency. A clear communicator and team-first contributor, I work to ensure collaboration drives success.",
+  "summaryHtml": "<p><strong>Aditya Gupta</strong></p><p>Business Analytics and Information Management student with strong data science concentration, experienced in applying Python, R, and SQL to solve real-world business problems. Skilled at transforming complex data into actionable insights to support strategic decision-making and operational efficiency. A clear communicator and team-first contributor, I work to ensure collaboration drives success.</p>",
   "skills": [
-    { "name": "TypeScript", "level": 90, "category": "Language" },
-    { "name": "JavaScript", "level": 95, "category": "Language" },
-    { "name": "React", "level": 90, "category": "Frontend" },
-    { "name": "Next.js", "level": 85, "category": "Frontend" },
-    { "name": "Node.js", "level": 85, "category": "Backend" },
-    { "name": "Python", "level": 80, "category": "Language" },
-    { "name": "PostgreSQL", "level": 75, "category": "Database" },
-    { "name": "MongoDB", "level": 70, "category": "Database" },
-    { "name": "AWS", "level": 75, "category": "Cloud" },
-    { "name": "Docker", "level": 70, "category": "DevOps" },
-    { "name": "Git", "level": 90, "category": "Tools" },
-    { "name": "Tailwind CSS", "level": 85, "category": "Frontend" }
+    {
+      "name": "Python",
+      "level": 95,
+      "category": "Programming Languages"
+    },
+    {
+      "name": "R",
+      "level": 90,
+      "category": "Programming Languages"
+    },
+    {
+      "name": "SQL",
+      "level": 92,
+      "category": "Programming Languages"
+    },
+    {
+      "name": "JavaScript",
+      "level": 85,
+      "category": "Programming Languages"
+    },
+    {
+      "name": "TypeScript",
+      "level": 80,
+      "category": "Programming Languages"
+    },
+    {
+      "name": "Java",
+      "level": 75,
+      "category": "Programming Languages"
+    },
+    {
+      "name": "React",
+      "level": 88,
+      "category": "Frontend Frameworks"
+    },
+    {
+      "name": "Next.js",
+      "level": 85,
+      "category": "Frontend Frameworks"
+    },
+    {
+      "name": "Node.js",
+      "level": 82,
+      "category": "Backend Technologies"
+    },
+    {
+      "name": "Express.js",
+      "level": 80,
+      "category": "Backend Technologies"
+    },
+    {
+      "name": "PostgreSQL",
+      "level": 90,
+      "category": "Databases"
+    },
+    {
+      "name": "MongoDB",
+      "level": 85,
+      "category": "Databases"
+    },
+    {
+      "name": "Redis",
+      "level": 75,
+      "category": "Databases"
+    },
+    {
+      "name": "Pandas",
+      "level": 93,
+      "category": "Data Science"
+    },
+    {
+      "name": "NumPy",
+      "level": 90,
+      "category": "Data Science"
+    },
+    {
+      "name": "Scikit-learn",
+      "level": 88,
+      "category": "Data Science"
+    },
+    {
+      "name": "TensorFlow",
+      "level": 80,
+      "category": "Machine Learning"
+    },
+    {
+      "name": "PyTorch",
+      "level": 78,
+      "category": "Machine Learning"
+    },
+    {
+      "name": "Apache Spark",
+      "level": 75,
+      "category": "Big Data"
+    },
+    {
+      "name": "Hadoop",
+      "level": 70,
+      "category": "Big Data"
+    },
+    {
+      "name": "Tableau",
+      "level": 88,
+      "category": "Data Visualization"
+    },
+    {
+      "name": "Power BI",
+      "level": 85,
+      "category": "Data Visualization"
+    },
+    {
+      "name": "D3.js",
+      "level": 75,
+      "category": "Data Visualization"
+    },
+    {
+      "name": "Docker",
+      "level": 82,
+      "category": "DevOps"
+    },
+    {
+      "name": "Kubernetes",
+      "level": 75,
+      "category": "DevOps"
+    },
+    {
+      "name": "AWS",
+      "level": 85,
+      "category": "Cloud Platforms"
+    },
+    {
+      "name": "Azure",
+      "level": 78,
+      "category": "Cloud Platforms"
+    },
+    {
+      "name": "GCP",
+      "level": 72,
+      "category": "Cloud Platforms"
+    },
+    {
+      "name": "Git",
+      "level": 90,
+      "category": "Version Control"
+    },
+    {
+      "name": "CI/CD",
+      "level": 80,
+      "category": "DevOps"
+    },
+    {
+      "name": "Linux",
+      "level": 85,
+      "category": "Operating Systems"
+    },
+    {
+      "name": "Apache Kafka",
+      "level": 70,
+      "category": "Big Data"
+    }
   ],
   "experience": [
     {
-      "title": "Senior Software Engineer",
-      "company": "Tech Innovations Inc",
+      "title": "Senior Data Scientist",
+      "company": "TechCorp Analytics",
       "location": "San Francisco, CA",
-      "startDate": "2022-01",
+      "startDate": "2023-06",
       "endDate": null,
       "current": true,
-      "description": "Lead development of customer-facing web applications using React and Next.js. Mentored junior developers and improved code quality through code reviews and best practices."
+      "bullets": [
+        "Developed and deployed machine learning models for predictive analytics, improving forecast accuracy by 35% and reducing operational costs by $2M annually",
+        "Built real-time data processing pipelines using Apache Kafka and Spark, processing 10TB+ of data daily with 99.9% uptime",
+        "Led a cross-functional team of 5 data engineers and analysts to deliver a customer segmentation platform using unsupervised learning techniques",
+        "Implemented A/B testing frameworks for product features, resulting in 15% increase in user engagement metrics",
+        "Created interactive dashboards in Tableau and Power BI for executive reporting, enabling data-driven decision making across the organization"
+      ],
+      "bulletsHtml": [
+        "Developed and deployed <strong>machine learning models</strong> for predictive analytics, improving forecast accuracy by <strong>35%</strong> and reducing operational costs by <strong>$2M annually</strong>",
+        "Built real-time data processing pipelines using <strong>Apache Kafka and Spark</strong>, processing <strong>10TB+ of data daily</strong> with <strong>99.9% uptime</strong>",
+        "Led a cross-functional team of <strong>5 data engineers and analysts</strong> to deliver a customer segmentation platform using unsupervised learning techniques",
+        "Implemented <strong>A/B testing frameworks</strong> for product features, resulting in <strong>15% increase</strong> in user engagement metrics",
+        "Created interactive dashboards in <strong>Tableau and Power BI</strong> for executive reporting, enabling data-driven decision making across the organization"
+      ]
     },
     {
-      "title": "Software Engineer",
-      "company": "StartupXYZ",
-      "location": "Remote",
+      "title": "Data Analyst",
+      "company": "Global Retail Solutions",
+      "location": "Chicago, IL",
+      "startDate": "2021-08",
+      "endDate": "2023-05",
+      "current": false,
+      "bullets": [
+        "Analyzed customer behavior data using SQL and Python, identifying key trends that led to a 20% increase in customer retention",
+        "Developed automated reporting systems using Python and PostgreSQL, reducing manual reporting time by 60%",
+        "Collaborated with marketing team to design and analyze campaigns, improving conversion rates by 25%",
+        "Created data visualizations and dashboards using Tableau, presenting insights to stakeholders and executives",
+        "Performed statistical analysis using R to identify correlations and patterns in sales data"
+      ],
+      "bulletsHtml": [
+        "Analyzed customer behavior data using <strong>SQL and Python</strong>, identifying key trends that led to a <strong>20% increase</strong> in customer retention",
+        "Developed automated reporting systems using <strong>Python and PostgreSQL</strong>, reducing manual reporting time by <strong>60%</strong>",
+        "Collaborated with marketing team to design and analyze campaigns, improving conversion rates by <strong>25%</strong>",
+        "Created data visualizations and dashboards using <strong>Tableau</strong>, presenting insights to stakeholders and executives",
+        "Performed statistical analysis using <strong>R</strong> to identify correlations and patterns in sales data"
+      ]
+    },
+    {
+      "title": "Business Intelligence Intern",
+      "company": "FinanceTech Inc.",
+      "location": "New York, NY",
       "startDate": "2020-06",
-      "endDate": "2021-12",
+      "endDate": "2021-07",
       "current": false,
-      "description": "Built and maintained full-stack applications using Node.js and React. Implemented CI/CD pipelines and improved application performance by 40%."
-    },
-    {
-      "title": "Junior Developer",
-      "company": "WebDev Agency",
-      "location": "Austin, TX",
-      "startDate": "2019-01",
-      "endDate": "2020-05",
-      "current": false,
-      "description": "Developed responsive web applications for clients. Collaborated with designers to implement pixel-perfect UI components."
+      "bullets": [
+        "Assisted in building ETL pipelines to extract, transform, and load data from multiple sources into data warehouses",
+        "Created SQL queries and stored procedures to support business reporting needs",
+        "Developed Python scripts for data cleaning and preprocessing, improving data quality by 40%",
+        "Supported data visualization projects using Power BI, creating reports for various business units",
+        "Participated in agile development processes and daily stand-ups with the data engineering team"
+      ],
+      "bulletsHtml": [
+        "Assisted in building <strong>ETL pipelines</strong> to extract, transform, and load data from multiple sources into data warehouses",
+        "Created <strong>SQL queries and stored procedures</strong> to support business reporting needs",
+        "Developed <strong>Python scripts</strong> for data cleaning and preprocessing, improving data quality by <strong>40%</strong>",
+        "Supported data visualization projects using <strong>Power BI</strong>, creating reports for various business units",
+        "Participated in <strong>agile development processes</strong> and daily stand-ups with the data engineering team"
+      ]
     }
   ],
   "education": [
     {
+      "degree": "Master of Science in Business Analytics and Information Management",
+      "school": "Purdue University, Mitch Daniels School of Business",
+      "location": "West Lafayette, IN",
+      "startDate": "2022-08",
+      "endDate": "2024-05",
+      "description": "Concentration in Data Science. Relevant coursework: Machine Learning, Data Mining, Statistical Methods, Database Management, Business Intelligence, Cloud Computing.",
+      "descriptionHtml": "<p><strong>Concentration in Data Science</strong></p><p>Relevant coursework: Machine Learning, Data Mining, Statistical Methods, Database Management, Business Intelligence, Cloud Computing.</p><p>GPA: 3.8/4.0</p>"
+    },
+    {
       "degree": "Bachelor of Science in Computer Science",
-      "school": "University of Technology",
-      "location": "Boston, MA",
-      "startDate": "2015-09",
-      "endDate": "2019-05",
-      "description": "Graduated Magna Cum Laude. Relevant coursework: Data Structures, Algorithms, Software Engineering, Database Systems."
+      "school": "University of California, Berkeley",
+      "location": "Berkeley, CA",
+      "startDate": "2018-08",
+      "endDate": "2022-05",
+      "description": "Minor in Statistics. Relevant coursework: Data Structures, Algorithms, Database Systems, Software Engineering, Statistics, Linear Algebra.",
+      "descriptionHtml": "<p><strong>Minor in Statistics</strong></p><p>Relevant coursework: Data Structures, Algorithms, Database Systems, Software Engineering, Statistics, Linear Algebra.</p><p>GPA: 3.7/4.0</p>"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Real-Time Fraud Detection System",
+      "role": "Lead Developer",
+      "startDate": "2023-01",
+      "endDate": "2023-08",
+      "bullets": [
+        "Built a real-time fraud detection system using machine learning models (XGBoost, Isolation Forest) that processes 1M+ transactions per day",
+        "Implemented streaming data pipeline with Apache Kafka, Apache Spark, and Redis for real-time feature engineering and model inference",
+        "Deployed models using Docker containers on Kubernetes cluster, achieving 99.5% accuracy and <10ms latency per prediction",
+        "Created monitoring dashboards with Grafana and Prometheus to track model performance and system metrics",
+        "Reduced false positive rate by 40% while maintaining 98% fraud detection rate, saving $500K annually in fraud prevention costs"
+      ],
+      "bulletsHtml": [
+        "Built a <strong>real-time fraud detection system</strong> using machine learning models (<strong>XGBoost, Isolation Forest</strong>) that processes <strong>1M+ transactions per day</strong>",
+        "Implemented streaming data pipeline with <strong>Apache Kafka, Apache Spark, and Redis</strong> for real-time feature engineering and model inference",
+        "Deployed models using <strong>Docker containers on Kubernetes</strong> cluster, achieving <strong>99.5% accuracy</strong> and <strong><10ms latency</strong> per prediction",
+        "Created monitoring dashboards with <strong>Grafana and Prometheus</strong> to track model performance and system metrics",
+        "Reduced false positive rate by <strong>40%</strong> while maintaining <strong>98% fraud detection rate</strong>, saving <strong>$500K annually</strong> in fraud prevention costs"
+      ],
+      "links": [
+        "https://github.com/AadiG1/fraud-detection-system",
+        "https://fraud-detection-demo.techcorp.com"
+      ]
+    },
+    {
+      "name": "Customer Lifetime Value Prediction Platform",
+      "role": "Full-Stack Developer",
+      "startDate": "2022-09",
+      "endDate": "2023-03",
+      "bullets": [
+        "Developed end-to-end ML platform for predicting customer lifetime value using Python, scikit-learn, and XGBoost",
+        "Built RESTful API with Flask and FastAPI, serving predictions to multiple business units with 99.9% uptime",
+        "Created interactive web dashboard using React, D3.js, and Plotly for visualizing customer segments and predictions",
+        "Designed and implemented PostgreSQL database schema for storing customer data and model predictions",
+        "Achieved 85% prediction accuracy and helped marketing team increase ROI by 30% through targeted campaigns"
+      ],
+      "bulletsHtml": [
+        "Developed end-to-end <strong>ML platform</strong> for predicting customer lifetime value using <strong>Python, scikit-learn, and XGBoost</strong>",
+        "Built <strong>RESTful API</strong> with <strong>Flask and FastAPI</strong>, serving predictions to multiple business units with <strong>99.9% uptime</strong>",
+        "Created interactive web dashboard using <strong>React, D3.js, and Plotly</strong> for visualizing customer segments and predictions",
+        "Designed and implemented <strong>PostgreSQL database schema</strong> for storing customer data and model predictions",
+        "Achieved <strong>85% prediction accuracy</strong> and helped marketing team increase <strong>ROI by 30%</strong> through targeted campaigns"
+      ],
+      "links": [
+        "https://github.com/AadiG1/clv-prediction-platform",
+        "https://clv-platform.demo.com"
+      ]
+    },
+    {
+      "name": "Distributed Data Processing Pipeline",
+      "role": "Data Engineer",
+      "startDate": "2022-03",
+      "endDate": "2022-08",
+      "bullets": [
+        "Architected and implemented scalable data processing pipeline using Apache Spark on AWS EMR, processing 50TB+ of data monthly",
+        "Built data ingestion system using Apache Airflow for orchestration, handling 100+ data sources with automatic error handling and retries",
+        "Implemented data quality checks and validation rules using Great Expectations, ensuring 99.8% data quality",
+        "Created automated data lineage tracking system using Apache Atlas, improving data governance and compliance",
+        "Reduced data processing time by 70% and infrastructure costs by 40% through optimization and auto-scaling"
+      ],
+      "bulletsHtml": [
+        "Architected and implemented <strong>scalable data processing pipeline</strong> using <strong>Apache Spark on AWS EMR</strong>, processing <strong>50TB+ of data monthly</strong>",
+        "Built data ingestion system using <strong>Apache Airflow</strong> for orchestration, handling <strong>100+ data sources</strong> with automatic error handling and retries",
+        "Implemented data quality checks and validation rules using <strong>Great Expectations</strong>, ensuring <strong>99.8% data quality</strong>",
+        "Created automated data lineage tracking system using <strong>Apache Atlas</strong>, improving data governance and compliance",
+        "Reduced data processing time by <strong>70%</strong> and infrastructure costs by <strong>40%</strong> through optimization and auto-scaling"
+      ],
+      "links": ["https://github.com/AadiG1/distributed-data-pipeline"]
+    },
+    {
+      "name": "Interactive Data Visualization Dashboard",
+      "role": "Frontend Developer",
+      "startDate": "2021-11",
+      "endDate": "2022-02",
+      "bullets": [
+        "Developed interactive dashboard using React, TypeScript, and D3.js for visualizing complex business metrics",
+        "Implemented real-time data updates using WebSockets and Server-Sent Events for live dashboard updates",
+        "Created reusable visualization components with React hooks and context API for state management",
+        "Built responsive design with Tailwind CSS, ensuring optimal user experience across all devices",
+        "Integrated with backend APIs using GraphQL, reducing API calls by 60% and improving load times"
+      ],
+      "bulletsHtml": [
+        "Developed interactive dashboard using <strong>React, TypeScript, and D3.js</strong> for visualizing complex business metrics",
+        "Implemented real-time data updates using <strong>WebSockets and Server-Sent Events</strong> for live dashboard updates",
+        "Created reusable visualization components with <strong>React hooks and context API</strong> for state management",
+        "Built responsive design with <strong>Tailwind CSS</strong>, ensuring optimal user experience across all devices",
+        "Integrated with backend APIs using <strong>GraphQL</strong>, reducing API calls by <strong>60%</strong> and improving load times"
+      ],
+      "links": [
+        "https://github.com/AadiG1/interactive-dashboard",
+        "https://dashboard.demo.com"
+      ]
+    },
+    {
+      "name": "Natural Language Processing for Sentiment Analysis",
+      "role": "ML Engineer",
+      "startDate": "2021-06",
+      "endDate": "2021-10",
+      "bullets": [
+        "Developed NLP models for sentiment analysis using BERT and RoBERTa transformers, achieving 92% accuracy",
+        "Built text preprocessing pipeline using NLTK and spaCy for cleaning and tokenizing text data",
+        "Created Flask API for serving predictions, handling 10K+ requests per day with <50ms response time",
+        "Implemented model versioning and A/B testing framework for comparing different model architectures",
+        "Deployed models on AWS SageMaker with automatic scaling, reducing infrastructure costs by 35%"
+      ],
+      "bulletsHtml": [
+        "Developed <strong>NLP models</strong> for sentiment analysis using <strong>BERT and RoBERTa transformers</strong>, achieving <strong>92% accuracy</strong>",
+        "Built text preprocessing pipeline using <strong>NLTK and spaCy</strong> for cleaning and tokenizing text data",
+        "Created <strong>Flask API</strong> for serving predictions, handling <strong>10K+ requests per day</strong> with <strong><50ms response time</strong>",
+        "Implemented <strong>model versioning and A/B testing framework</strong> for comparing different model architectures",
+        "Deployed models on <strong>AWS SageMaker</strong> with automatic scaling, reducing infrastructure costs by <strong>35%</strong>"
+      ],
+      "links": ["https://github.com/AadiG1/sentiment-analysis-nlp"]
     }
   ],
   "awards": [
     {
-      "title": "Employee of the Year",
-      "organization": "Tech Innovations Inc",
-      "date": "2023",
-      "description": "Recognized for outstanding contribution to product development and team leadership."
+      "title": "Outstanding Data Science Project Award",
+      "organization": "Purdue University",
+      "date": "2024",
+      "description": "Recognized for excellence in developing a comprehensive machine learning solution for predictive analytics in business applications.",
+      "descriptionHtml": "<p>Recognized for excellence in developing a <strong>comprehensive machine learning solution</strong> for predictive analytics in business applications.</p>"
     },
     {
-      "title": "Best Hackathon Project",
-      "organization": "TechFest 2020",
-      "date": "2020",
-      "description": "Won first place in company hackathon for innovative e-commerce solution."
+      "title": "Best Paper Award",
+      "organization": "International Conference on Data Science",
+      "date": "2023",
+      "description": "Awarded for research paper on 'Advanced Fraud Detection Using Ensemble Learning Methods' presented at ICDS 2023.",
+      "descriptionHtml": "<p>Awarded for research paper on <strong>'Advanced Fraud Detection Using Ensemble Learning Methods'</strong> presented at ICDS 2023.</p>"
+    },
+    {
+      "title": "Dean's List",
+      "organization": "Purdue University",
+      "date": "2022-2024",
+      "description": "Maintained high academic performance with GPA above 3.8 for multiple semesters.",
+      "descriptionHtml": "<p>Maintained <strong>high academic performance</strong> with GPA above <strong>3.8</strong> for multiple semesters.</p>"
+    },
+    {
+      "title": "Hackathon Winner",
+      "organization": "TechCrunch Disrupt Hackathon",
+      "date": "2022",
+      "description": "First place winner for developing an innovative real-time analytics platform for e-commerce businesses.",
+      "descriptionHtml": "<p><strong>First place winner</strong> for developing an innovative <strong>real-time analytics platform</strong> for e-commerce businesses.</p>"
     }
   ]
 }
-

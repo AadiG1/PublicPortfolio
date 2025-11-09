@@ -25,7 +25,7 @@ if (!RESUME_DOCX) {
     path.join(process.cwd(), "assets"),
     path.join(process.cwd(), "..", "assets"),
   ];
-  
+
   for (const assetsDir of assetsDirs) {
     if (fs.existsSync(assetsDir)) {
       const files = fs.readdirSync(assetsDir);
@@ -118,7 +118,8 @@ type ResumeData = z.infer<typeof ResumeSchema>;
 const HEADING_PATTERNS = {
   summary: /^(summary|profile|about|objective|overview)$/i,
   skills: /^(skills?|technical skills?|competencies)$/i,
-  experience: /^(experience|work experience|professional experience|employment|work history)$/i,
+  experience:
+    /^(experience|work experience|professional experience|employment|work history)$/i,
   education: /^(education|academic|qualifications)$/i,
   projects: /^(projects?|portfolio|work samples)$/i,
   awards: /^(awards?|honors?|achievements?|recognition)$/i,
@@ -253,7 +254,10 @@ function htmlToText(html: string): string {
 }
 
 // Parse bullets from HTML
-function extractBullets(html: string): { bullets: string[]; bulletsHtml: string[] } {
+function extractBullets(html: string): {
+  bullets: string[];
+  bulletsHtml: string[];
+} {
   const bulletMatches = html.match(/<li[^>]*>(.*?)<\/li>/gs);
   if (!bulletMatches) {
     // Try to find bullet points in plain text
@@ -304,8 +308,9 @@ async function parseResume(): Promise<ResumeData> {
 
   console.log("🔄 Converting DOCX to HTML and text...");
   const result = await mammoth.convertToHtml({ buffer });
-  const html = result.value;
-  const text = mammoth.extractRawText({ buffer }).value;
+  const html = result.value || "";
+  const textResult = await mammoth.extractRawText({ buffer });
+  const text = textResult.value || "";
 
   console.log("📝 Parsing sections...");
 
@@ -319,7 +324,10 @@ async function parseResume(): Promise<ResumeData> {
 
   // Split HTML into sections by headings
   const htmlSections = html.split(/(<h[1-6][^>]*>.*?<\/h[1-6]>)/i);
-  const textLines = text.split(/\n/).map((line) => line.trim()).filter((line) => line);
+  const textLines = text
+    .split(/\n/)
+    .map((line) => line.trim())
+    .filter((line) => line);
 
   let currentSection: string | null = null;
   let currentSectionContent: string[] = [];
@@ -337,12 +345,7 @@ async function parseResume(): Promise<ResumeData> {
         const content = currentSectionContent.join("\n");
         const contentHtml = currentSectionHtml.join("");
 
-        await processSection(
-          currentSection,
-          content,
-          contentHtml,
-          resumeData
-        );
+        await processSection(currentSection, content, contentHtml, resumeData);
       }
 
       // Start new section
@@ -379,7 +382,8 @@ async function parseResume(): Promise<ResumeData> {
     const firstParagraph = text.split(/\n\n/)[0];
     if (firstParagraph && firstParagraph.length > 50) {
       resumeData.summaryText = firstParagraph.trim();
-      const firstParagraphHtml = html.split(/<p[^>]*>/)[1]?.split("</p>")[0] || "";
+      const firstParagraphHtml =
+        html.split(/<p[^>]*>/)[1]?.split("</p>")[0] || "";
       resumeData.summaryHtml = firstParagraphHtml.trim();
     }
   }
@@ -435,7 +439,10 @@ async function processSection(
   }
 }
 
-function parseSkills(text: string, html: string): Array<{ name: string; level?: number; category?: string }> {
+function parseSkills(
+  text: string,
+  html: string
+): Array<{ name: string; level?: number; category?: string }> {
   const skills: Array<{ name: string; level?: number; category?: string }> = [];
 
   // Try to extract skills from bullet points or comma-separated lists
@@ -461,7 +468,10 @@ function parseSkills(text: string, html: string): Array<{ name: string; level?: 
 
     if (!matched) {
       // Try comma-separated list
-      const items = line.split(/[,;•·\-\*]/).map((item) => item.trim()).filter((item) => item);
+      const items = line
+        .split(/[,;•·\-\*]/)
+        .map((item) => item.trim())
+        .filter((item) => item);
       for (const item of items) {
         if (item.length > 2 && item.length < 50) {
           skills.push({ name: item });
@@ -473,7 +483,10 @@ function parseSkills(text: string, html: string): Array<{ name: string; level?: 
   return skills.length > 0 ? skills : [{ name: "See resume for details" }];
 }
 
-function parseExperience(text: string, html: string): Array<{
+function parseExperience(
+  text: string,
+  html: string
+): Array<{
   title: string;
   company: string;
   location?: string;
@@ -495,10 +508,15 @@ function parseExperience(text: string, html: string): Array<{
   }> = [];
 
   // Split by double newlines or clear separators
-  const entries = text.split(/\n\n+/).filter((entry) => entry.trim().length > 20);
+  const entries = text
+    .split(/\n\n+/)
+    .filter((entry) => entry.trim().length > 20);
 
   for (const entry of entries) {
-    const lines = entry.split(/\n/).map((line) => line.trim()).filter((line) => line);
+    const lines = entry
+      .split(/\n/)
+      .map((line) => line.trim())
+      .filter((line) => line);
 
     if (lines.length < 2) continue;
 
@@ -521,17 +539,26 @@ function parseExperience(text: string, html: string): Array<{
     }
 
     // Remove dates and location from title/company
-    title = title.replace(/\d{4}.*$/, "").replace(/\([^)]+\)/, "").trim();
-    company = company.replace(/\d{4}.*$/, "").replace(/\([^)]+\)/, "").trim();
+    title = title
+      .replace(/\d{4}.*$/, "")
+      .replace(/\([^)]+\)/, "")
+      .trim();
+    company = company
+      .replace(/\d{4}.*$/, "")
+      .replace(/\([^)]+\)/, "")
+      .trim();
 
     // Extract bullets (remaining lines)
     const bullets = lines.slice(2).filter((line) => {
-      return line.match(/^[•·\-\*]\s+/) || line.match(/^\d+[\.\)]\s+/) || line.length > 20;
+      return (
+        line.match(/^[•·\-\*]\s+/) ||
+        line.match(/^\d+[\.\)]\s+/) ||
+        line.length > 20
+      );
     });
 
-    const { bullets: bulletsText, bulletsHtml: bulletsHtmlArray } = extractBullets(
-      entry
-    );
+    const { bullets: bulletsText, bulletsHtml: bulletsHtmlArray } =
+      extractBullets(entry);
 
     experiences.push({
       title: title || "Position",
@@ -546,7 +573,10 @@ function parseExperience(text: string, html: string): Array<{
   return experiences;
 }
 
-function parseEducation(text: string, html: string): Array<{
+function parseEducation(
+  text: string,
+  html: string
+): Array<{
   degree: string;
   school: string;
   location?: string;
@@ -565,10 +595,15 @@ function parseEducation(text: string, html: string): Array<{
     descriptionHtml?: string;
   }> = [];
 
-  const entries = text.split(/\n\n+/).filter((entry) => entry.trim().length > 10);
+  const entries = text
+    .split(/\n\n+/)
+    .filter((entry) => entry.trim().length > 10);
 
   for (const entry of entries) {
-    const lines = entry.split(/\n/).map((line) => line.trim()).filter((line) => line);
+    const lines = entry
+      .split(/\n/)
+      .map((line) => line.trim())
+      .filter((line) => line);
 
     if (lines.length < 1) continue;
 
@@ -595,7 +630,10 @@ function parseEducation(text: string, html: string): Array<{
   return education;
 }
 
-function parseProjects(text: string, html: string): Array<{
+function parseProjects(
+  text: string,
+  html: string
+): Array<{
   name: string;
   role?: string;
   startDate?: string;
@@ -614,10 +652,15 @@ function parseProjects(text: string, html: string): Array<{
     links?: string[];
   }> = [];
 
-  const entries = text.split(/\n\n+/).filter((entry) => entry.trim().length > 10);
+  const entries = text
+    .split(/\n\n+/)
+    .filter((entry) => entry.trim().length > 10);
 
   for (const entry of entries) {
-    const lines = entry.split(/\n/).map((line) => line.trim()).filter((line) => line);
+    const lines = entry
+      .split(/\n/)
+      .map((line) => line.trim())
+      .filter((line) => line);
 
     if (lines.length < 1) continue;
 
@@ -632,7 +675,8 @@ function parseProjects(text: string, html: string): Array<{
       links.push(...linkMatches);
     }
 
-    const { bullets: bulletsText, bulletsHtml: bulletsHtmlArray } = extractBullets(entry);
+    const { bullets: bulletsText, bulletsHtml: bulletsHtmlArray } =
+      extractBullets(entry);
 
     projects.push({
       name: firstLine.replace(/\d{4}.*$/, "").trim(),
@@ -647,7 +691,10 @@ function parseProjects(text: string, html: string): Array<{
   return projects;
 }
 
-function parseAwards(text: string, html: string): Array<{
+function parseAwards(
+  text: string,
+  html: string
+): Array<{
   title: string;
   organization?: string;
   date?: string;
@@ -662,10 +709,15 @@ function parseAwards(text: string, html: string): Array<{
     descriptionHtml?: string;
   }> = [];
 
-  const entries = text.split(/\n\n+/).filter((entry) => entry.trim().length > 5);
+  const entries = text
+    .split(/\n\n+/)
+    .filter((entry) => entry.trim().length > 5);
 
   for (const entry of entries) {
-    const lines = entry.split(/\n/).map((line) => line.trim()).filter((line) => line);
+    const lines = entry
+      .split(/\n/)
+      .map((line) => line.trim())
+      .filter((line) => line);
 
     if (lines.length < 1) continue;
 
@@ -674,11 +726,16 @@ function parseAwards(text: string, html: string): Array<{
     const date = dateMatch ? dateMatch[1] : undefined;
 
     // Try to extract organization (usually in parentheses or after dash)
-    const orgMatch = firstLine.match(/[–—\-]\s*(.+?)(?:\s*\(|$)/) || firstLine.match(/\(([^)]+)\)/);
+    const orgMatch =
+      firstLine.match(/[–—\-]\s*(.+?)(?:\s*\(|$)/) ||
+      firstLine.match(/\(([^)]+)\)/);
     const organization = orgMatch ? orgMatch[1].trim() : undefined;
 
     awards.push({
-      title: firstLine.replace(/[–—\-].*$/, "").replace(/\([^)]+\)/, "").trim(),
+      title: firstLine
+        .replace(/[–—\-].*$/, "")
+        .replace(/\([^)]+\)/, "")
+        .trim(),
       organization,
       date,
       description: lines.slice(1).join(" ") || undefined,
@@ -716,4 +773,3 @@ async function main() {
 }
 
 main();
-

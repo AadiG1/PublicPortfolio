@@ -1,4 +1,4 @@
-import { sanitizeHtml } from "@/lib/utils";
+import { sanitizeHtmlContent } from "@/lib/utils";
 
 interface SafeHtmlProps {
   html: string;
@@ -6,7 +6,7 @@ interface SafeHtmlProps {
 }
 
 export default function SafeHtml({ html, className }: SafeHtmlProps) {
-  const sanitized = sanitizeHtml(html);
+  const sanitized = sanitizeHtmlContent(html);
 
   return (
     <div
@@ -15,4 +15,3 @@ export default function SafeHtml({ html, className }: SafeHtmlProps) {
     />
   );
 }
-

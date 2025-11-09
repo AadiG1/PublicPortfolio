@@ -26,6 +26,7 @@ npm run seed:images
 ```
 
 This will:
+
 - Create `public/images/` directory
 - Download deterministic placeholder images
 - Update `content/projects.json` with correct image paths
@@ -131,6 +132,7 @@ npm run type-check
 Husky is configured to run linting, formatting, and type checking before each commit. This ensures code quality.
 
 To bypass hooks (not recommended):
+
 ```bash
 git commit --no-verify
 ```
@@ -204,4 +206,3 @@ PORT=3001 npm run dev
 ## Support
 
 For issues and questions, please open an issue on GitHub.
-

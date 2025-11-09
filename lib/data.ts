@@ -89,4 +89,3 @@ export function getProjects(): Project[] {
 export function getProject(id: string): Project | undefined {
   return getProjects().find((project) => project.id === id);
 }
-
