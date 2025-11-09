@@ -1,0 +1,71 @@
+{
+  "summary": "Full-stack developer with 5+ years of experience building scalable web applications. Passionate about clean code, user experience, and modern web technologies.",
+  "skills": [
+    { "name": "TypeScript", "level": 90, "category": "Language" },
+    { "name": "JavaScript", "level": 95, "category": "Language" },
+    { "name": "React", "level": 90, "category": "Frontend" },
+    { "name": "Next.js", "level": 85, "category": "Frontend" },
+    { "name": "Node.js", "level": 85, "category": "Backend" },
+    { "name": "Python", "level": 80, "category": "Language" },
+    { "name": "PostgreSQL", "level": 75, "category": "Database" },
+    { "name": "MongoDB", "level": 70, "category": "Database" },
+    { "name": "AWS", "level": 75, "category": "Cloud" },
+    { "name": "Docker", "level": 70, "category": "DevOps" },
+    { "name": "Git", "level": 90, "category": "Tools" },
+    { "name": "Tailwind CSS", "level": 85, "category": "Frontend" }
+  ],
+  "experience": [
+    {
+      "title": "Senior Software Engineer",
+      "company": "Tech Innovations Inc",
+      "location": "San Francisco, CA",
+      "startDate": "2022-01",
+      "endDate": null,
+      "current": true,
+      "description": "Lead development of customer-facing web applications using React and Next.js. Mentored junior developers and improved code quality through code reviews and best practices."
+    },
+    {
+      "title": "Software Engineer",
+      "company": "StartupXYZ",
+      "location": "Remote",
+      "startDate": "2020-06",
+      "endDate": "2021-12",
+      "current": false,
+      "description": "Built and maintained full-stack applications using Node.js and React. Implemented CI/CD pipelines and improved application performance by 40%."
+    },
+    {
+      "title": "Junior Developer",
+      "company": "WebDev Agency",
+      "location": "Austin, TX",
+      "startDate": "2019-01",
+      "endDate": "2020-05",
+      "current": false,
+      "description": "Developed responsive web applications for clients. Collaborated with designers to implement pixel-perfect UI components."
+    }
+  ],
+  "education": [
+    {
+      "degree": "Bachelor of Science in Computer Science",
+      "school": "University of Technology",
+      "location": "Boston, MA",
+      "startDate": "2015-09",
+      "endDate": "2019-05",
+      "description": "Graduated Magna Cum Laude. Relevant coursework: Data Structures, Algorithms, Software Engineering, Database Systems."
+    }
+  ],
+  "awards": [
+    {
+      "title": "Employee of the Year",
+      "organization": "Tech Innovations Inc",
+      "date": "2023",
+      "description": "Recognized for outstanding contribution to product development and team leadership."
+    },
+    {
+      "title": "Best Hackathon Project",
+      "organization": "TechFest 2020",
+      "date": "2020",
+      "description": "Won first place in company hackathon for innovative e-commerce solution."
+    }
+  ]
+}
+

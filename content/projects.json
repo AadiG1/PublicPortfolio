@@ -1,0 +1,38 @@
+{
+  "projects": [
+    {
+      "id": "1",
+      "title": "E-Commerce Platform",
+      "description": "A full-stack e-commerce platform with payment integration, inventory management, and admin dashboard.",
+      "longDescription": "Built with Next.js, TypeScript, and Stripe for payments. Features include user authentication, product catalog, shopping cart, order management, and admin dashboard for inventory control.",
+      "technologies": ["Next.js", "TypeScript", "Stripe", "PostgreSQL", "Tailwind CSS"],
+      "image": "/images/project-1.jpg",
+      "githubUrl": "https://github.com/username/ecommerce",
+      "liveUrl": "https://ecommerce-demo.vercel.app",
+      "featured": true
+    },
+    {
+      "id": "2",
+      "title": "Task Management App",
+      "description": "A collaborative task management application with real-time updates and team collaboration features.",
+      "longDescription": "Real-time task management application built with React, Node.js, and Socket.io. Supports team collaboration, task assignments, deadlines, and progress tracking.",
+      "technologies": ["React", "Node.js", "Socket.io", "MongoDB", "Express"],
+      "image": "/images/project-2.jpg",
+      "githubUrl": "https://github.com/username/taskapp",
+      "liveUrl": "https://taskapp-demo.vercel.app",
+      "featured": true
+    },
+    {
+      "id": "3",
+      "title": "Weather Dashboard",
+      "description": "A beautiful weather dashboard with location-based forecasts and interactive maps.",
+      "longDescription": "Weather application with 7-day forecasts, hourly updates, and interactive weather maps. Integrates with multiple weather APIs and provides accurate predictions.",
+      "technologies": ["Next.js", "TypeScript", "OpenWeather API", "Chart.js"],
+      "image": "/images/project-3.jpg",
+      "githubUrl": "https://github.com/username/weather",
+      "liveUrl": "https://weather-demo.vercel.app",
+      "featured": true
+    }
+  ]
+}
+
