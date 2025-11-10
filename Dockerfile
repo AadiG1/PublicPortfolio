@@ -15,6 +15,9 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
+# Remove test files that might cause build issues (they're not needed for production)
+RUN rm -f vitest.config.ts vitest.config.mjs vitest.setup.ts 2>/dev/null || true
+
 # Generate images before build (skip if fails - images should be pre-committed)
 RUN npm run seed:images || echo "Warning: Image seeding skipped"
 

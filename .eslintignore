@@ -1,17 +1,9 @@
-node_modules
-.next
-.git
-.gitignore
-README.md
-.env*.local
-.DS_Store
-coverage
-.vscode
-.idea
 vitest.config.ts
 vitest.config.mjs
 vitest.setup.ts
 **/*.test.ts
 **/*.test.tsx
 **/__tests__/**
+.next
+node_modules
 
