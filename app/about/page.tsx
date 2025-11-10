@@ -23,7 +23,7 @@ export default function AboutPage() {
                 <div className="absolute inset-0 animate-pulse rounded-full bg-gradient-to-br from-blue-500 to-purple-600 opacity-20 blur-2xl" />
                 <div className="relative h-full w-full overflow-hidden rounded-full shadow-2xl ring-4 ring-white dark:ring-gray-800">
                   <Image
-                    src="/images/headshot.jpg"
+                    src="/images/headshot.jpeg"
                     alt="Aditya Gupta - Profile picture"
                     width={256}
                     height={256}

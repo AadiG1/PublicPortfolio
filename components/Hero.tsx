@@ -21,7 +21,7 @@ export default function Hero() {
               <div className="absolute inset-0 animate-pulse rounded-full bg-gradient-to-br from-blue-500 to-purple-600 opacity-20 blur-2xl" />
               <div className="relative h-full w-full transform overflow-hidden rounded-full shadow-2xl ring-4 ring-white transition-transform duration-300 hover:scale-105 dark:ring-gray-800">
                 <Image
-                  src="/images/headshot.jpg"
+                  src="/images/headshot.jpeg"
                   alt="Aditya Gupta - Profile picture"
                   width={288}
                   height={288}

@@ -15,7 +15,7 @@ interface ImageConfig {
 
 const imagesToSeed: ImageConfig[] = [
   {
-    filename: "headshot.jpg",
+    filename: "headshot.jpeg",
     seed: "headshot-aditya-gupta",
     width: 400,
     height: 400,
@@ -121,18 +121,31 @@ async function seedImages(): Promise<void> {
   // Download all images
   for (const imageConfig of imagesToSeed) {
     const filepath = path.join(IMAGES_DIR, imageConfig.filename);
+
+    // Always skip headshot if it exists - user should replace with their own photo
+    if (
+      (imageConfig.filename === "headshot.jpg" ||
+        imageConfig.filename === "headshot.jpeg") &&
+      fs.existsSync(filepath)
+    ) {
+      console.log(
+        `⏭️  Skipped ${imageConfig.filename} (using custom photo - replace manually if needed)`
+      );
+      continue;
+    }
+
+    // Skip other images if they already exist
+    if (fs.existsSync(filepath)) {
+      console.log(`⏭️  Skipped (already exists): ${imageConfig.filename}`);
+      continue;
+    }
+
     const url = getPlaceholderImageUrl(
       imageConfig.seed,
       imageConfig.width,
       imageConfig.height,
       imageConfig.type
     );
-
-    // Skip if image already exists (comment out to force re-download)
-    // if (fs.existsSync(filepath)) {
-    //   console.log(`⏭️  Skipped (already exists): ${imageConfig.filename}`);
-    //   continue;
-    // }
 
     try {
       await downloadImage(url, filepath);
