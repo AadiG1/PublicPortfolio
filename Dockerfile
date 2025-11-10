@@ -44,6 +44,7 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
 # CRITICAL: Copy public folder - Next.js standalone does NOT include it automatically
 # This must be at the root level where server.js can access it
+# The public folder is served as static files by Next.js
 COPY --from=builder --chown=nextjs:nodejs /app/public ./public
 
 # Verify public folder was copied correctly in final image

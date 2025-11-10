@@ -2,8 +2,9 @@
 const nextConfig = {
   output: "standalone",
   images: {
-    // For Cloud Run, we might need to disable optimization or ensure proper serving
-    unoptimized: false,
+    // Disable image optimization for Cloud Run - images are served as static files
+    // This prevents "received null" errors when Next.js tries to optimize images
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
