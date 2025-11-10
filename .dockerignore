@@ -14,4 +14,6 @@ vitest.setup.ts
 **/*.test.ts
 **/*.test.tsx
 **/__tests__/**
+# DO NOT ignore public folder - images must be included!
+# public/
 
