@@ -2,6 +2,8 @@
 const nextConfig = {
   output: "standalone",
   images: {
+    // For Cloud Run, we might need to disable optimization or ensure proper serving
+    unoptimized: false,
     remotePatterns: [
       {
         protocol: "https",

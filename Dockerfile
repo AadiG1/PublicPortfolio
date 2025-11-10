@@ -19,8 +19,10 @@ COPY . .
 RUN rm -f vitest.config.ts vitest.config.mjs vitest.setup.ts 2>/dev/null || true
 
 # Verify images exist before build
-RUN ls -la public/images/ 2>/dev/null || echo "WARNING: public/images directory not found"
-RUN test -f public/images/headshot.jpeg && echo "✓ headshot.jpeg found" || echo "✗ headshot.jpeg NOT FOUND"
+RUN echo "=== Verifying images before build ===" && \
+    ls -la public/images/ 2>/dev/null || echo "WARNING: public/images directory not found" && \
+    test -f public/images/headshot.jpeg && echo "✓ headshot.jpeg found" || echo "✗ headshot.jpeg NOT FOUND" && \
+    echo "Total image files:" && find public/images -type f 2>/dev/null | wc -l || echo "0"
 
 # Build the application
 ENV NEXT_TELEMETRY_DISABLED=1
@@ -44,8 +46,12 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 # This must be at the root level where server.js can access it
 COPY --from=builder --chown=nextjs:nodejs /app/public ./public
 
-# Verify public folder was copied correctly
-RUN ls -la public/images/ 2>/dev/null && echo "✓ public/images copied successfully" || echo "✗ ERROR: public/images not found in final image"
+# Verify public folder was copied correctly in final image
+RUN echo "=== Verifying public folder in final image ===" && \
+    ls -la public/ 2>/dev/null && echo "✓ public folder exists" || echo "✗ public folder NOT FOUND" && \
+    ls -la public/images/ 2>/dev/null && echo "✓ public/images folder exists" || echo "✗ public/images folder NOT FOUND" && \
+    test -f public/images/headshot.jpeg && echo "✓ headshot.jpeg found in final image" || echo "✗ headshot.jpeg NOT FOUND in final image" && \
+    echo "Total image files in final image:" && find public/images -type f 2>/dev/null | wc -l || echo "0"
 
 USER nextjs
 
