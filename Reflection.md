@@ -15,11 +15,11 @@ AI as a Tool
 About My Process
 
 - Breaking the project into prompts was key — and the source of my annoyance — because it became apparent how crucial prompt engineering is, since AI needs precision. I started with a general command: “Build a personal portfolio website.” Once Cursor generated a foundation, I divided the work into smaller prompts to get all the requirements:
-- Add navigation with links to About, Projects, and Contact.
-- Build responsive project cards using Tailwind.
-- Create Flask routes for data retrieval and form handling.
-- Write a Dockerfile for containerized deployment to Cloud Run.
-  Each short, specific prompt gave more accurate results than broad ones. I learned to write prompts like code comments, clear, technical, and outcome-focused.
+- - Add navigation with links to About, Projects, and Contact.
+- - Build responsive project cards using Tailwind.
+- - Create Flask routes for data retrieval and form handling.
+- - Write a Dockerfile for containerized deployment to Cloud Run.
+    Each short, specific prompt gave more accurate results than broad ones. I learned to write prompts like code comments, clear, technical, and outcome-focused.
 - I evaluated AI-generated code by testing and refreshing site. I ran everything locally, checked browser outputs, and confirmed API responses. I also reviewed syntax, structure, and naming conventions by running it through ChatGPT. AI often repeated logic across files, so I consolidated functions and removed unused imports.
 - As I gained confidence, I began editing AI’s code directly instead of regenerating it. This made collaboration smoother and avoided overwriting progress. I also learned the importance of version control. Cursor sometimes replaced working code, so I used Git commits to track each change.
 - What I would do differently in another AI-assisted project is plan prompts as milestones. Setup, frontend, backend, testing, and deployment would each have focused prompt lists. I would also integrate AI into documentation from the start.
